@@ -5,14 +5,17 @@
 
 
     ];
-    $user_tmp ='username';
-    session_start();
-    $_SESSION['user'] = $utilisateur['username'];
+    $user_tmp =$utilisateur['username'];
+
 
     if(!empty($_POST)) {
         if ($utilisateur['username'] == $_POST['username']) {
             if ($utilisateur['pass'] == $_POST['pass']) {
-                header('Location: success.php');
+
+              session_start();
+              $_SESSION['user'] = $utilisateur['username'];
+
+              header('Location: success.php');
                 exit();
             } else {
                 echo 'erreur de mot de passe';
