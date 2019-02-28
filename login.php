@@ -1,11 +1,13 @@
 <?php
     $utilisateur =[
-                'username'=>'kojeje',
+                'username'=>'prout',
                 'pass'=>'admin'
 
 
     ];
     $user_tmp ='username';
+    session_start();
+    $_SESSION['user'] = $utilisateur['username'];
 
     if(!empty($_POST)) {
         if ($utilisateur['username'] == $_POST['username']) {
