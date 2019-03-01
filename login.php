@@ -2,7 +2,9 @@
 <html lang="fr">
 <head>
 	<title>Login V3</title>
+
   <?php
+//    metadonnées
     include_once('head.php')
   ?>
 </head>
@@ -106,6 +108,7 @@
 
 
 <?php
+// balises script
   include_once('scripts.php')
 ?>
 

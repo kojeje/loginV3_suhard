@@ -1,6 +1,7 @@
 
 <html lang="en">
 <?php
+//    metadonnées
   include_once('head.php')
 ?>
 <body>
@@ -39,6 +40,7 @@
 <div id="dropDownSelect1"></div>
 
 <?php
+// balises script
   include_once('scripts.php')
 ?>
 </body>
