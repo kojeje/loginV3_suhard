@@ -1,82 +1,80 @@
-<?php
-    $utilisateur =[
-                'username'=>'prout',
-                'pass'=>'admin'
 
-
-    ];
-    $user_tmp =$utilisateur['username'];
-
-
-    if(!empty($_POST)) {
-        if ($utilisateur['username'] == $_POST['username']) {
-            if ($utilisateur['pass'] == $_POST['pass']) {
-
-              session_start();
-              $_SESSION['user'] = $utilisateur['username'];
-
-              header('Location: success.php');
-                exit();
-            } else {
-                echo 'erreur de mot de passe';
-                $user_tmp = $_POST['username'];
-            }
-        } else {
-            echo "utilisateur inconnu";
-        }
-    }
-
-
-    ?>
-<html lang="en">
+<html lang="fr">
 <head>
 	<title>Login V3</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+  <?php
+    include_once('head.php')
+  ?>
 </head>
 <body>
-	
+<?php
+  $utilisateur =[
+
+    'username'=>'kojeje',
+    'pass'=>'admin'
+
+
+  ];
+
+  //  Initialise la variable $user_tmp
+  $user_tmp =$utilisateur['username'];
+
+  //Si le formulaire envoyé n'est pas vide
+  if(!empty($_POST)) {
+
+    //Et si le pseudo du compte est équivalent à celui saisi dans le formulaire
+    if ($utilisateur['username'] == $_POST['username']) {
+
+      //Et si le pseudo du compte est équivalent à celui saisi dans le formulaire
+      if ($utilisateur['pass'] == $_POST['pass']) {
+
+        // On ouvre une session
+        session_start();
+
+        // On initialise la variable de session (index: 'user'), équivalente à $utilisateur['username']
+        $_SESSION['user'] = $utilisateur['username'];
+
+        // Redirection vers la page success_login.php
+        header('Location: success_login.php');
+        exit();
+        //OU si mot de pass incorrect
+      } else {
+        // On initialise la variable de session (index: 'user'), équivalente à $utilisateur['username']
+        $_SESSION['user'] = $utilisateur['username'];
+        //Afficher la fenetre d'erreur
+         header('Location: error.php');
+        exit();
+
+      }
+    } else {
+      echo "utilisateur inconnu";
+    }
+  }
+
+?>
+
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100">
 				<form method="POST" class="login100-form validate-form">
+
 					<span class="login100-form-logo">
-						<i class="zmdi zmdi-landscape"></i>
+					  <i class="far fa-sign-in-alt"></i>
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
+						Se connecter
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" value="<?= $user_tmp ?>" placeholder="username">
+            <label class="label" for="username">pseudo</label>
+						<input class="input100" type="text" name="username" value="<?= $user_tmp ?>" placeholder="entrez votre pseudo">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+            <label class="label" for="pass">mot de passe</label>
+						<input class="input100" type="password" name="pass" placeholder="entrez votre mot de passe">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -105,23 +103,12 @@
 	
 
 	<div id="dropDownSelect1"></div>
-	
-<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
+
+
+<?php
+  include_once('scripts.php')
+?>
+
 
 </body>
 </html
